@@ -8,7 +8,7 @@ properties([
 ])
 
 stage('Trigger openwrt build') {
-    build job: "../openwrt/${OPENWRT_BRANCH}", parameters: [
+    build job: "../openwrt/${params.OPENWRT_BRANCH}", parameters: [
         string(name: 'OVERRIDE_PACKAGES', value: "${BRANCH_NAME}")
     ]
 }
