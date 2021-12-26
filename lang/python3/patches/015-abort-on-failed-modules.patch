@@ -6,7 +6,7 @@ index da67731..928e0de 100644
              print("Failed to build these modules:")
              print_three_column(failed)
              print()
-+            if cross_compiling: sys.exit(1)
++            if CROSS_COMPILING: sys.exit(1)
  
          if self.failed_on_import:
              failed = self.failed_on_import[:]

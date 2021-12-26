@@ -1,0 +1,49 @@
+diff --git a/setup.py b/setup.py
+index b79d57f..66e4ea6 100644
+--- a/setup.py
++++ b/setup.py
+@@ -752,7 +752,7 @@ class PyBuildExt(build_ext):
+             add_dir_to_list(self.compiler.include_dirs,
+                             sysconfig.get_config_var("INCLUDEDIR"))
+ 
+-        system_lib_dirs = ['/lib64', '/usr/lib64', '/lib', '/usr/lib']
++        system_lib_dirs = ['/lib64', '/usr/lib64', '/lib', '/usr/lib', '/usr/lib/x86_64-linux-gnu']
+         system_include_dirs = ['/usr/include']
+         # lib_dirs and inc_dirs are used to search for files;
+         # if a file is found in one of those directories, it can
+@@ -1000,8 +1000,8 @@ class PyBuildExt(build_ext):
+         # use the same library for the readline and curses modules.
+         if 'curses' in readline_termcap_library:
+             curses_library = readline_termcap_library
+-        elif self.compiler.find_library_file(self.lib_dirs, 'ncursesw'):
+-            curses_library = 'ncursesw'
++        #elif self.compiler.find_library_file(self.lib_dirs, 'ncursesw'):
++        #    curses_library = 'ncursesw'
+         # Issue 36210: OSS provided ncurses does not link on AIX
+         # Use IBM supplied 'curses' for successful build of _curses
+         elif AIX and self.compiler.find_library_file(self.lib_dirs, 'curses'):
+@@ -1789,11 +1789,11 @@ class PyBuildExt(build_ext):
+         if TEST_EXTENSIONS:
+             self.detect_test_extensions()
+         self.detect_readline_curses()
+-        self.detect_crypt()
++        #self.detect_crypt()
+         self.detect_socket()
+         self.detect_openssl_hashlib()
+         self.detect_hash_builtins()
+-        self.detect_dbm_gdbm()
++        #self.detect_dbm_gdbm()
+         self.detect_sqlite()
+         self.detect_platform_specific_exts()
+         self.detect_nis()
+@@ -1803,8 +1803,8 @@ class PyBuildExt(build_ext):
+         self.detect_decimal()
+         self.detect_ctypes()
+         self.detect_multiprocessing()
+-        if not self.detect_tkinter():
+-            self.missing.append('_tkinter')
++        #if not self.detect_tkinter():
++        #    self.missing.append('_tkinter')
+         self.detect_uuid()
+ 
+ ##         # Uncomment these lines if you want to play with xxmodule.c
